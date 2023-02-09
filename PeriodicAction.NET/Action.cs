@@ -210,30 +210,30 @@ namespace System.Threading
                 Console.WriteLine(message);
             }
         }
+    }
+
+    /// <summary>
+    /// The strategy to use when an error is encounter by a Periodic <see cref="Action"/>
+    /// </summary>
+    public enum ErrorStrategy
+    {
+        /// <summary>
+        /// Ignore <see cref="Exception"/>, Your work will silently fail
+        /// <para>Your <see cref="Action"/> will run again at the next <see href="Interval"/> like it didn't happen.</para>
+        /// </summary>
+        Ignore,
 
         /// <summary>
-        /// The strategy to use when an error is encounter by a Periodic <see cref="Action"/>
+        /// Throw <see cref="Exception"/> to Caller
+        /// <para>This could crash your application if you don't catch it.</para>
         /// </summary>
-        public enum ErrorStrategy
-        {
-            /// <summary>
-            /// Ignore <see cref="Exception"/>, Your work will silenty fail
-            /// <para>Your <see cref="Action"/> will run again at the next <see href="Interval"/> like it didn't happen.</para>
-            /// </summary>
-            Ignore,
+        Throw,
 
-            /// <summary>
-            /// Throw <see cref="Exception"/> to Caller
-            /// <para>This could crash your applicaiton if you don't catch it.</para>
-            /// </summary>
-            Throw,
-
-            /// <summary>
-            /// Use <see cref="ExceptionHandler"/>
-            /// <para>This is the same as Ignoring Exceptions but the <see cref="Exception"/> will be forwarded to the <see cref="ExceptionHandler"/> so you can log it.</para>
-            /// </summary>
-            Event,
-        }
+        /// <summary>
+        /// Use <see href="ExceptionHandler"/>
+        /// <para>This is the same as Ignoring Exceptions but the <see cref="Exception"/> will be forwarded to the <see href="ExceptionHandler"/> so you can log it.</para>
+        /// </summary>
+        Event,
     }
 
     /// <summary>

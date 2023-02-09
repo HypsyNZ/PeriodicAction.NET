@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Test
 {
@@ -46,7 +47,7 @@ namespace Test
                 Console.WriteLine("Testing" + count++);
             }, 1);
 
-            Action.Run(cts.Token);
+            Action.Run(cts.Token, ErrorStrategy.Ignore, TaskCreationOptions.DenyChildAttach);
 
             sw.Restart();
             Delay.Wait(500);

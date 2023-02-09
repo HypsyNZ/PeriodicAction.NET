@@ -13,6 +13,14 @@ Run an `Action` periodically at the `Interval` until it is canceled with a `Canc
       // Your Action
     }, 1);
         
-    Action.Run(cts.Token);
+    Action.Run(cts.Token, ErrorStrategy.Ignore, TaskCreationOptions.DenyChildAttach);
     cts.Cancel();
 ```
+
+# Error Strategy
+
+| Strategy | Description |
+|----|----|
+| Ignore | Your work will silently fail, The Action will run again at the next Interval like it didn't happen.|
+| Throw| Throw to Caller, This could crash your application if you don't catch it.|
+| Event| This is the same as Ignoring Exceptions but the Exception will be forwarded to the ExceptionHandler so you can log it.
