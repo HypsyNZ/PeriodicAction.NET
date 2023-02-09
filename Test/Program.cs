@@ -17,7 +17,6 @@ namespace Test
                 sw.Stop();
                 Console.WriteLine(sw.ElapsedMilliseconds);
             }
-            Console.ReadLine();
 
             //2 -- First call for application might be slower
             //1
@@ -39,6 +38,24 @@ namespace Test
             //1
             //1
             //1
+
+            int count = 1;
+            CancellationTokenSource cts = new CancellationTokenSource();
+            PeriodicAction Action = new PeriodicAction(() =>
+            { 
+                Console.WriteLine("Testing" + count++);
+            }, 1);
+
+            Action.Run(cts.Token);
+
+            sw.Restart();
+            Delay.Wait(500);
+            sw.Stop();
+            Console.WriteLine(sw.ElapsedMilliseconds);
+
+            cts.Cancel();
+
+            Console.ReadLine();
         }
     }
 }
