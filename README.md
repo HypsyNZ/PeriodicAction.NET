@@ -12,4 +12,7 @@ Run an `Action` periodically at the `Interval` until it is canceled with a `Canc
     {
       // Your Action
     }, 1);
+        
+    Action.Run(cts.Token);
+    cts.Cancel();
 ```
