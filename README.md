@@ -1,4 +1,4 @@
-[![nuget-download-blue](https://user-images.githubusercontent.com/54571583/217700276-a8730c9a-c96e-47bd-a63a-d4a2874b572a.png)](https://www.nuget.org/packages/PeriodicAction.NET/)
+[![NUGET-blue](https://user-images.githubusercontent.com/54571583/218278582-ded4b3ca-012f-4a81-bc9d-00f35410bc37.png)](https://www.nuget.org/packages/PeriodicAction.NET/)
 
 # PeriodicAction.NET
 
