@@ -38,7 +38,6 @@ namespace System.Threading
         private readonly Action _Action;
         private readonly long _Interval;
         private readonly SemaphoreWeak _SlimWeak;
-        private readonly string _ErrorMessage = string.Empty;
 
         private const string INTERVAL = "Increase Interval of: ";
         private const string EXCEPTION = "Exception: ";
@@ -57,9 +56,8 @@ namespace System.Threading
         /// </summary>
         /// <param name="action">The Action</param>
         /// <param name="intervalMs">The <see href="Interval"/> to trigger the Action</param>
-        /// <param name="errorMessage">User friendly error message</param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        public PeriodicAction(Action action, long intervalMs, string errorMessage = EXCEPTION)
+        public PeriodicAction(Action action, long intervalMs)
         {
             if (intervalMs < 0)
             {
@@ -69,7 +67,6 @@ namespace System.Threading
             _Interval = intervalMs;
             _SlimWeak = new SemaphoreWeak();
             _Action = action;
-            _ErrorMessage = errorMessage;
         }
 
         /// <summary>
